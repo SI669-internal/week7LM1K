@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Overlay, Icon, Input } from '@rneui/themed';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 
-function ListMaker1000Final () {
+function ListMaker1000Delete () {
 
   // INITIAL VALUES FOR TESTING
   const initTodos = [
@@ -15,7 +15,6 @@ function ListMaker1000Final () {
   const [todos, setTodos] = useState(initTodos);
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [inputText, setInputText] = useState('');
-  const [selectedItem, setSelectedItem] = useState('');
 
   // DATA MODEL FUNCTIONS (CRUD)
   const createTodo = (todoText) => {
@@ -28,8 +27,7 @@ function ListMaker1000Final () {
   }
 
   const updateTodo = (todo, newText) => { 
-    todo.text = newText;
-    setTodos(todos);
+    // TBD
   }
 
   const deleteTodo = (todo) => {    
@@ -47,11 +45,6 @@ function ListMaker1000Final () {
         </View>
         <TouchableOpacity 
           style={styles.li2}  
-          onPress={()=>{
-            setSelectedItem(item);
-            setInputText(item.text);
-            setOverlayVisible(true);
-          }}  
         >
           <Icon 
             name="edit"
@@ -122,7 +115,6 @@ function ListMaker1000Final () {
           <Button
             title="Cancel"
             onPress={()=>{
-              setSelectedItem(undefined);
               setInputText('');
               setOverlayVisible(false)
             }}  
@@ -130,12 +122,7 @@ function ListMaker1000Final () {
           <Button
             title="Add Todo"
             onPress={()=>{
-              if (selectedItem) {
-                updateTodo(selectedItem, inputText);
-              } else {
-                createTodo(inputText);
-              }
-              setSelectedItem(undefined);
+              createTodo(inputText);
               setInputText('');
               setOverlayVisible(false);
             }}
@@ -207,5 +194,5 @@ const styles = StyleSheet.create({
 
 //export default ListMaker1000Start;
 // export default ListMaker1000Create;
-// export default ListMaker1000Delete;
-export default ListMaker1000Final;
+export default ListMaker1000Delete;
+//export default ListMaker1000Final;
