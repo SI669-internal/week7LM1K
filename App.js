@@ -31,8 +31,7 @@ function ListMaker1000Delete () {
   }
 
   const deleteTodo = (todo) => {    
-    let newTodos = todos.filter((item)=>item.key != todo.key);
-    setTodos(newTodos);
+    // TBD
   }
   // END DATA MODEL
 
@@ -51,21 +50,16 @@ function ListMaker1000Delete () {
             type="font-awesome"
             color="black"
             size={25}
-            iconStyle={{ marginRight: 10 }}
           />
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.li3}
-          onPress={()=>{
-            deleteTodo(item);
-          }}  
         >
           <Icon 
             name="trash"
             type="font-awesome"
             color="black"
             size={25}
-            iconStyle={{ marginRight: 10 }}
           />
         </TouchableOpacity>
       </View>
