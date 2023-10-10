@@ -2,6 +2,45 @@ import React, { useState } from 'react';
 import { Button, Overlay, Icon, Input } from '@rneui/themed';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 
+  // CUSTOM COMPONENT FOR DISPLAYING A SINGLE LIST ITEM
+  function TodoListItem({item, setSelectedItem, setInputText, setOverlayVisible}) {
+    return (
+      <View style={styles.listItemView}>
+        <View style={styles.li1}>
+          <Text style={styles.listItemText}>{item.text}</Text>
+        </View>
+        <TouchableOpacity 
+          style={styles.li2}  
+          onPress={()=>{
+            setSelectedItem(item);
+            setInputText(item.text);
+            setOverlayVisible(true);
+          }}  
+        >
+          <Icon 
+            name="edit"
+            type="font-awesome"
+            color="black"
+            size={25}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity 
+          style={styles.li3}
+          onPress={()=>{
+            deleteTodo(item);
+          }}  
+        >
+          <Icon 
+            name="trash"
+            type="font-awesome"
+            color="black"
+            size={25}
+          />
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
 function ListMaker1000Final () {
 
   // INITIAL VALUES FOR TESTING
@@ -40,44 +79,6 @@ function ListMaker1000Final () {
   }
   // END DATA MODEL
 
-  // CUSTOM COMPONENT FOR DISPLAYING A SINGLE LIST ITEM
-  function TodoListItem({item}) {
-    return (
-      <View style={styles.listItemView}>
-        <View style={styles.li1}>
-          <Text style={styles.listItemText}>{item.text}</Text>
-        </View>
-        <TouchableOpacity 
-          style={styles.li2}  
-          onPress={()=>{
-            setSelectedItem(item);
-            setInputText(item.text);
-            setOverlayVisible(true);
-          }}  
-        >
-          <Icon 
-            name="edit"
-            type="font-awesome"
-            color="black"
-            size={25}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity 
-          style={styles.li3}
-          onPress={()=>{
-            deleteTodo(item);
-          }}  
-        >
-          <Icon 
-            name="trash"
-            type="font-awesome"
-            color="black"
-            size={25}
-          />
-        </TouchableOpacity>
-      </View>
-    );
-  }
 
   // MAIN UI
   return (
@@ -92,7 +93,12 @@ function ListMaker1000Final () {
           data={todos}
           renderItem={({item})=>{
             return (
-              <TodoListItem item={item}/>
+              <TodoListItem 
+                item={item} 
+                setSelectedItem={setSelectedItem}
+                setInputText={setInputText}
+                setOverlayVisible={setOverlayVisible}
+              />
             );
           }}
         />
