@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { Button, Overlay, Icon, Input } from '@rneui/themed';
+import { useState } from 'react';
+import { Button, Overlay, Input } from '@rneui/base';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+
 
 function ListMaker1000Final () {
 
@@ -55,12 +57,7 @@ function ListMaker1000Final () {
             setOverlayVisible(true);
           }}  
         >
-          <Icon 
-            name="edit"
-            type="font-awesome"
-            color="black"
-            size={25}
-          />
+          <MaterialIcons name="edit" size={24} color="black" />
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.li3}
@@ -68,12 +65,7 @@ function ListMaker1000Final () {
             deleteTodo(item);
           }}  
         >
-          <Icon 
-            name="trash"
-            type="font-awesome"
-            color="black"
-            size={25}
-          />
+          <MaterialIcons name="delete" size={24} color="black" />
         </TouchableOpacity>
       </View>
     );
@@ -103,7 +95,7 @@ function ListMaker1000Final () {
           color='#AAAACC'
           onPress={()=>{setOverlayVisible(true)}}
         >
-          <Icon name='add' color='#444477' size={32}/>
+          <MaterialIcons name="add" size={36} color="black" />
         </Button>
       </View>
 
